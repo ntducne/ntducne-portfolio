@@ -20,9 +20,9 @@ export default function RootLayout({
   return (
 
     <>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         {/* <AOSInit/> */}
-      <body className={`dark:bg-[#1f1f1f] ${inter.className}`}>
+      <body className={`${inter.className} bg-background text-foreground antialiased selection:bg-primary/30`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

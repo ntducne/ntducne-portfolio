@@ -8,7 +8,8 @@ import Resume from "@/components/sections/resume";
 import Skills from "@/components/sections/skills";
 import { Button } from "@/components/ui/button";
 import UserInfo from "@/components/user-info";
-import { useRef, useState } from "react";
+import { ModeToggle } from "@/components/mode-toggle";
+import { useEffect, useRef, useState } from "react";
 
 import {
   Drawer,
@@ -41,50 +42,69 @@ export default function Home() {
   const scrollToElement = (section: string) => {
     switch (section) {
       case "introduce":
-        if (introduce.current) {
-          introduce.current.scrollIntoView({ behavior: 'smooth' });
-        }
+        introduce.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case "about":
-        if (about.current) {
-          about.current.scrollIntoView({ behavior: 'smooth' });
-        }
+        about.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case "resume":
-        if (resume.current) {
-          resume.current.scrollIntoView({ behavior: 'smooth' });
-        }
+        resume.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case "skill":
-        if (skill.current) {
-          skill.current.scrollIntoView({ behavior: 'smooth' });
-        }
+        skill.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case "project":
-        if (project.current) {
-          project.current.scrollIntoView({ behavior: 'smooth' });
-        }
+        project.current?.scrollIntoView({ behavior: 'smooth' });
         break;
       case "contact":
-        if (contact.current) {
-          contact.current.scrollIntoView({ behavior: 'smooth' });
-        }
-        break;
-      default:
+        contact.current?.scrollIntoView({ behavior: 'smooth' });
         break;
     }
   };
 
+  const [activeSection, setActiveSection] = useState("introduce");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = [
+        { id: 'introduce', ref: introduce },
+        { id: 'about', ref: about },
+        { id: 'resume', ref: resume },
+        { id: 'skill', ref: skill },
+        { id: 'project', ref: project },
+        { id: 'contact', ref: contact },
+      ];
+
+      let current = "";
+      sections.forEach(section => {
+        if (section.ref.current) {
+          const rect = section.ref.current.getBoundingClientRect();
+          if (rect.top <= window.innerHeight / 2 && rect.bottom >= window.innerHeight / 3) {
+            current = section.id;
+          }
+        }
+      });
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Trigger initially
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <>
 
-      <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white text-sm py-4 dark:bg-neutral-800 sticky top-0 z-50 sm:hidden">
+      <header className="flex flex-wrap sm:justify-start sm:flex-nowrap w-full bg-white/80 dark:bg-black/40 backdrop-blur-md border-b dark:border-white/10 text-sm py-4 sticky top-0 z-50 sm:hidden">
         <nav className="max-w-[85rem] w-full mx-auto px-4 sm:flex sm:items-center sm:justify-between" aria-label="Global">
           <div className="flex items-center justify-between">
             <Link href="https://ntducc.id.vn" className="flex-none text-xl font-semibold dark:text-white">
               Portfolio
             </Link>
-            <div className="">
+            <div className="flex items-center gap-4">
+              <ModeToggle />
               <Drawer>
                 <DrawerTrigger className="dark:text-white">
                   {
@@ -115,27 +135,43 @@ export default function Home() {
         </nav>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-8 m-5 lg:m-0">
-        <div className="lg:col-span-3  lg:h-dvh lg:sticky lg:top-0 flex justify-start items-center">
+      <div className="flex flex-col lg:flex-row w-full max-w-[1500px] mx-auto relative mt-5 lg:mt-0">
+        <div className="w-full lg:w-[400px] xl:w-[450px] shrink-0 lg:h-dvh lg:sticky lg:top-0 flex justify-center items-center px-4 lg:px-8">
           <UserInfo />
         </div>
-        <div className="col-span-4 w-full">
-          <div className="mb-[14%]" ref={introduce}></div>
-          <Introduce />
-          <div className="mb-[14%]" ref={about}></div>
-          <About />
-          <div className="mb-[14%]" ref={resume}></div>
-          <Resume />
-          <div className="mb-[17%]" ref={skill}></div>
-          <Skills />
-          <div className="mb-[14%]" ref={project}></div>
-          <Projects />
-          <div className="mb-[14%]" ref={contact}></div>
-          <Contact />
+        <div className="flex-1 w-full pt-10 lg:pt-20 px-4 sm:px-8 lg:px-12 xl:px-16 max-w-[900px] mx-auto">
+          <div ref={introduce} className="scroll-mt-32">
+            <Introduce />
+          </div>
+          <div className="mb-[14%]"></div>
+          
+          <div ref={about} className="scroll-mt-32">
+            <About />
+          </div>
+          <div className="mb-[14%]"></div>
+          
+          <div ref={resume} className="scroll-mt-32">
+            <Resume />
+          </div>
+          <div className="mb-[17%]"></div>
+          
+          <div ref={skill} className="scroll-mt-32">
+            <Skills />
+          </div>
+          <div className="mb-[14%]"></div>
+          
+          <div ref={project} className="scroll-mt-32">
+            <Projects />
+          </div>
+          <div className="mb-[14%]"></div>
+          
+          <div ref={contact} className="scroll-mt-32">
+            <Contact />
+          </div>
           <div className="mb-[14%]"></div>
         </div>
-        <div className="col-span-1 h-dvh sticky top-0 lg:flex justify-start items-center hidden">
-          <RightSideBar scrollToElement={scrollToElement} />
+        <div className="hidden lg:flex w-[100px] shrink-0 h-dvh sticky top-0 justify-center items-center">
+          <RightSideBar scrollToElement={scrollToElement} activeSection={activeSection} />
         </div>
       </div>
     </>

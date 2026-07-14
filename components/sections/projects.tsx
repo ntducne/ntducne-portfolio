@@ -8,44 +8,26 @@ export default function Projects(props: any) {
 
     return (
         <section ref={props.section_5}>
-            <div className="border border-gray-500 w-44 text-center rounded-full py-1 text-lg mb-14 dark:text-white flex justify-center items-center">
-                {section_item.icon}<small className="uppercase ml-2 mt-[1px]">{section_item.name}</small>
+            <div className="border border-white/10 glass-card w-44 text-center rounded-full py-1.5 text-lg mb-14 flex justify-center items-center text-muted-foreground shadow-lg shadow-emerald-500/5 hover:border-emerald-500/30 transition-colors duration-300">
+                {section_item.icon}<small className="uppercase ml-2 mt-[1px] tracking-widest">{section_item.name}</small>
             </div>
-            <div className="text-5xl mt-5 mb-10 dark:text-white">
-                <p className="my-4">Some projects <span className="text-green-500 ">examples</span></p>
+            <div className="text-4xl md:text-5xl mt-5 mb-10">
+                <p className="my-4 font-bold tracking-tight">Some <span className="text-gradient">Projects</span></p>
             </div>
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 {
                     item.map((project: any, index: number) => {
                         return (
-                            <div className="group cursor-pointer" key={index}>
-                                <div className="relative shadow-sm rounded-xl overflow-hidden">
-                                    <img className="w-full h-[260px] rounded-xl transition-all group-hover:scale-110" src={project.img} alt="Image Description" />
-                                    <div className="absolute top-0 bg-black w-full h-full opacity-30"></div>
-                                    <div className="absolute bottom-0 start-0 end-0">
-                                        {/* <div className="p-4 md:p-5 flex">
-                                            {
-                                                project.technology.map((tech: string, index: number) => {
-                                                    return (
-                                                        <div className={`px-4 py-2 rounded-full bg-white text-sm group-hover:bg-[#1f1f1f] group-hover:text-white transition-all ${index > 0 ? 'ml-2' : ''}`} key={index}>
-                                                            {tech}
-                                                        </div>
-                                                    )
-                                                })
-                                            }
-                                        </div> */}
-                                    </div>
+                            <div className="group cursor-pointer glass-card rounded-3xl p-4 hover:border-emerald-500/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300 flex flex-col" key={index}>
+                                <div className="relative shadow-sm rounded-2xl overflow-hidden aspect-[4/3]">
+                                    <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={project.img} alt={project.name} />
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
                                 </div>
-                                <div>
-                                    <h3 className="text-2xl mt-5 dark:text-white">{project.name}</h3>
-                                    <p className="text-gray-500 mt-2">{project.description}</p>
-                                    {/* <div className="mt-4">
-                                        <Link href={project.website} className="text-green-500 hover:underline">Website</Link>
-                                        <Link href={project.git} className="ml-4 text-green-500 hover:underline">Github</Link>
-                                    </div> */}
+                                <div className="mt-6 mb-4 px-2 flex-grow flex flex-col">
+                                    <h3 className="text-2xl font-bold group-hover:text-emerald-400 transition-colors duration-300">{project.name}</h3>
+                                    <p className="text-muted-foreground mt-3 line-clamp-3 leading-relaxed flex-grow">{project.description}</p>
                                 </div>
                             </div>
-
                         )
                     })
                 }

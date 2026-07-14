@@ -29,45 +29,50 @@ export default function UserInfo(props: any) {
     };
 
     return (
-        <div className="py-4 border dark:border-gray-500 rounded-[30px] px-10 w-full lg:w-[60%] lg:ml-20" ref={props.userInfo}>
-            <div className="grid grid-cols-1 md:grid-cols-2 md:items-center md:justify-center w-full mx-auto p-0 mt-6 mb-6 dark:text-white">
-                <div className="text-left font-bold text-5xl">
+        <div className="py-10 rounded-[30px] px-8 w-full max-w-[400px] glass-card relative group mx-auto border border-white/10" ref={props.userInfo}>
+            <div className="absolute inset-0 overflow-hidden rounded-[30px] -z-10">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-emerald-500/20 rounded-full blur-3xl group-hover:bg-emerald-500/30 transition-all duration-500"></div>
+                <div className="absolute bottom-0 left-0 w-40 h-40 bg-cyan-500/20 rounded-full blur-3xl group-hover:bg-cyan-500/30 transition-all duration-500"></div>
+            </div>
+            
+            <div className="flex flex-col items-start w-full mx-auto p-0 mt-2 mb-8 gap-2 text-left">
+                <div className="font-bold text-4xl xl:text-5xl text-gradient tracking-tight">
                     {item.name}
                 </div>
-                <h4 className="md:text-right text-sm">
+                <h4 className="text-base text-muted-foreground font-medium">
                     {item.major}
                 </h4>
             </div>
-            <div className="overflow-visible py-2 mb-6">
-            <Image
-                src={item.img}
-                width={500}
-                height={500}
-                className="lg:w-[80%] rounded-3xl text-large mx-auto object-cover"
-                alt="Picture of the author"
-            />
+            <div className="overflow-visible py-2 mb-8 w-full">
+                <Image
+                    src={item.img}
+                    width={500}
+                    height={500}
+                    className="w-full rounded-3xl object-cover border border-white/10 shadow-2xl group-hover:scale-[1.03] transition-transform duration-500 aspect-square"
+                    alt="Picture of the author"
+                />
             </div>
-            <div className="pb-0 pt-2 px-4 text-center dark:text-white">
-                <p className="text-xl mb-2">
+            <div className="pb-0 pt-2 text-left mb-8">
+                <p className="text-sm mb-1 text-muted-foreground uppercase tracking-widest font-semibold">
                     Live in
                 </p>
-                <h4 className="text-xl">{item.address}</h4>
+                <h4 className="text-xl font-semibold">{item.address}</h4>
             </div>
-            <div className="mt-7 mb-8 flex items-center justify-center text-[12px] text-gray-400">
-                <CopyrightCircleOutlined className="w-5" />
+            <div className="mt-7 mb-8 flex items-center justify-center text-[12px] text-muted-foreground">
+                <CopyrightCircleOutlined className="w-5 mr-1" />
                 <div>{year} Duc. All Rights Reserved</div>
             </div>
-            <div className="flex justify-center items-center mb-6">
+            <div className="flex justify-center items-center mb-6 gap-2">
                 {
                     item.social.map((value, index) => (
-                        <Link target="_blank" href={value.link} key={index} className="dark:bg-white border dark:text-black m-1 p-3 rounded-xl dark:hover:bg-transparent dark:hover:border dark:hover:border-gray-500 dark:hover:text-white transition-all">
+                        <Link target="_blank" href={value.link} key={index} className="bg-gray-100 dark:bg-white/5 border border-transparent dark:border-white/10 m-1 p-3 rounded-xl hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:text-white dark:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/25">
                             {value.icon}
                         </Link>
                     ))
                 }
             </div>
             <div className="text-center mb-6">
-                <Button color="secondary" className="dark:bg-white text-black" onClick={handleHireMe}>
+                <Button className="bg-emerald-500 hover:bg-emerald-600 text-white border-0 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-1 transition-all duration-300 w-full sm:w-auto px-8 rounded-full" onClick={handleHireMe}>
                     <MailFilled className="mr-2"/> Hire Me !
                 </Button>
             </div>

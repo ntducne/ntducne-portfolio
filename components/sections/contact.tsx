@@ -63,27 +63,23 @@ export default function Contact() {
 
     return (
         <section>
-            <div className="border border-gray-500 w-44 text-center rounded-full py-1 text-lg mb-8 dark:text-white flex justify-center items-center">
-                {section_item.icon}<small className="uppercase ml-2 mt-[1px]">{section_item.name}</small>
+            <div className="border border-white/10 glass-card w-44 text-center rounded-full py-1.5 text-lg mb-8 flex justify-center items-center text-muted-foreground shadow-lg shadow-emerald-500/5 hover:border-emerald-500/30 transition-colors duration-300">
+                {section_item.icon}<small className="uppercase ml-2 mt-[1px] tracking-widest">{section_item.name}</small>
             </div>
-            <div className="text-5xl mt-5 mb-10 dark:text-white">
-                <p className="my-4">Contact <span className="text-green-500 ">Me</span></p>
+            <div className="text-4xl md:text-5xl mt-5 mb-10">
+                <p className="my-4 font-bold tracking-tight">Contact <span className="text-gradient">Me</span></p>
             </div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-6 lg:mb-3">
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 mb-6 lg:mb-6">
                         <FormField
                             control={form.control}
                             name="fullName"
                             render={({ field }) => (
                                     <FormItem>
-                                        {/* <FormLabel className="dark:text-white">Username</FormLabel> */}
                                         <FormControl>
-                                            <Input placeholder="Full Name (*)" {...field} className="dark:bg-transparent dark:text-white dark:border-gray-600 animation duration-150" />
+                                            <Input placeholder="Full Name (*)" {...field} className="bg-white/5 border border-white/10 rounded-xl px-5 py-6 focus-visible:ring-1 focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-all duration-300 placeholder:text-muted-foreground text-lg shadow-sm" />
                                         </FormControl>
-                                        <FormDescription>
-                                            {/* This is your public display name. */}
-                                        </FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -94,13 +90,9 @@ export default function Contact() {
                             name="email"
                             render={({ field }) => (
                                     <FormItem>
-                                        {/* <FormLabel className="dark:text-white">Username</FormLabel> */}
                                         <FormControl>
-                                            <Input type="email" placeholder="Email (*)" {...field} className="dark:bg-transparent dark:text-white dark:border-gray-600 animation duration-150" />
+                                            <Input type="email" placeholder="Email (*)" {...field} className="bg-white/5 border border-white/10 rounded-xl px-5 py-6 focus-visible:ring-1 focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-all duration-300 placeholder:text-muted-foreground text-lg shadow-sm" />
                                         </FormControl>
-                                        <FormDescription>
-                                            {/* This is your public display name. */}
-                                        </FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -111,13 +103,9 @@ export default function Contact() {
                             name="phone"
                             render={({ field }) => (
                                     <FormItem>
-                                        {/* <FormLabel className="dark:text-white">Username</FormLabel> */}
                                         <FormControl>
-                                            <Input placeholder="Phone (optional)" {...field} className="dark:bg-transparent dark:text-white dark:border-gray-600 animation duration-150" />
+                                            <Input placeholder="Phone (optional)" {...field} className="bg-white/5 border border-white/10 rounded-xl px-5 py-6 focus-visible:ring-1 focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-all duration-300 placeholder:text-muted-foreground text-lg shadow-sm" />
                                         </FormControl>
-                                        <FormDescription>
-                                            {/* This is your public display name. */}
-                                        </FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}
@@ -128,21 +116,17 @@ export default function Contact() {
                         control={form.control}
                         name="message"
                         render={({ field }) => (
-                                <FormItem>
-                                    {/* <FormLabel className="dark:text-white">Username</FormLabel> */}
+                                <FormItem className="mt-6">
                                     <FormControl>
-                                        <Textarea placeholder="Write your message ..." {...field} className="dark:bg-transparent dark:text-white dark:border-gray-600 animation duration-150" />
+                                        <Textarea placeholder="Write your message ..." {...field} className="bg-white/5 border border-white/10 rounded-xl px-5 py-5 focus-visible:ring-1 focus-visible:ring-emerald-500 focus-visible:border-emerald-500 transition-all duration-300 placeholder:text-muted-foreground text-lg shadow-sm min-h-[140px] resize-none" />
                                     </FormControl>
-                                    <FormDescription>
-                                        {/* This is your public display name. */}
-                                    </FormDescription>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
 
 
-                    <Button type="submit" className="mt-3 dark:bg-transparent border border-gray-200 dark:border-gray-500">Submit</Button>
+                    <Button type="submit" className="mt-8 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full px-10 py-6 text-lg border-0 shadow-lg shadow-emerald-500/25 hover:shadow-emerald-500/40 hover:-translate-y-1 transition-all duration-300">Submit Message</Button>
                 </form>
             </Form>
         </section>

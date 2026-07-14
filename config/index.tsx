@@ -54,8 +54,8 @@ export const config = () => {
 
     const info = () => {
         return {
-            name: "N.T.Duc",
-            major: "Web Designer & Developer",
+            name: "Nguyen Duc",
+            major: "Software Engineer",
             img: "/img.jpg",
             email: "nguyenduc10603@gmail.com",
             address: "Hanoi, Vietnam",
@@ -108,9 +108,14 @@ export const config = () => {
                 description: "I am currently studying at FPT Polytechnic Education, majoring in Information Technology."
             },
             {
+                time: "May 2023 - August 2023",
+                title: "DK Space Company",
+                description: "Intern Backend Developer"
+            },
+            {
                 time: "December 2023 - March 2025",
                 title: "GolSoft Company",
-                description: "Backend and FrontEnd Developer"
+                description: "Fresher Backend and FrontEnd Developer"
             },
             {
                 time: "April 2025 - Present",
@@ -123,33 +128,38 @@ export const config = () => {
     const skills = () => {
         return [
             {
-                name: "HTML/CSS/JS",
-                icon: "https://www.10bestdesign.com/blog/content/images/2018/03/20.png",
+                name: "NextJS",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg",
                 animation: "fade-up"
             },
             {
+                name: "Redis",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redis/redis-original.svg",
+                animation: "fade-up-right"
+            },
+            {
                 name: "Laravel",
-                icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Laravel.svg/800px-Laravel.svg.png",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg",
                 animation: "fade-down"
             },
             {
                 name: "PHP",
-                icon: "https://pngimg.com/d/php_PNG10.png",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg",
                 animation: "fade-right"
             },
             {
                 name: "MongoDB",
-                icon: "https://seeklogo.com/images/M/mongodb-logo-D13D67C930-seeklogo.com.png",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg",
                 animation: "fade-left"
             },
             {
                 name: "MySQL",
-                icon: "https://pngimg.com/uploads/mysql/mysql_PNG23.png",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg",
                 animation: "fade-up-right"
             },
             {
                 name: "VueJS",
-                icon: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Vue.png",
+                icon: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vuejs/vuejs-original.svg",
                 animation: "fade-up-left"
             }
         ]

@@ -36,33 +36,34 @@
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    /* Very dark, almost black background for premium feel */
+    --background: 240 10% 4%; 
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 240 10% 6%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 240 10% 6%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 142 71% 45%; /* Emerald green for primary accent */
+    --primary-foreground: 144 100% 11%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 240 5% 15%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
+    --muted: 240 5% 15%;
     --muted-foreground: 215 20.2% 65.1%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 240 5% 15%;
     --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 240 5% 15%;
+    --input: 240 5% 15%;
+    --ring: 142 71% 45%;
   }
 }
 
@@ -76,9 +77,23 @@
   }
 }
 
-/* hidden scrollbar */
 @layer utilities {
+  /* hidden scrollbar */
   ::-webkit-scrollbar {
     display: none;
+  }
+
+  /* Glassmorphism utilities */
+  .glass-card {
+    @apply bg-white/80 dark:bg-white/5 backdrop-blur-md border border-black/5 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+
+  .glass-panel {
+    @apply bg-gray-50/80 dark:bg-black/40 backdrop-blur-xl border border-black/5 dark:border-white/5 shadow-sm dark:shadow-none;
+  }
+
+  /* Gradient Text */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-500;
   }
 }
