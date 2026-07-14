@@ -64,7 +64,7 @@ export default function UserInfo(props: any) {
             </div>
             <div className="flex justify-center items-center mb-6 gap-2">
                 {
-                    item.social.map((value, index) => (
+                    item.social.map((value: any, index: number) => (
                         <Link target="_blank" href={value.link} key={index} className="bg-gray-100 dark:bg-white/5 border border-transparent dark:border-white/10 m-1 p-3 rounded-xl hover:bg-emerald-500 dark:hover:bg-emerald-500 hover:text-white dark:text-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-emerald-500/25">
                             {value.icon}
                         </Link>

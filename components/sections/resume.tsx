@@ -97,7 +97,7 @@ export default function Resume(props :any) {
             <ol className="relative border-s border-white/10 ml-3">
 
                 {
-                    item.map((item, index) => (
+                    item.map((item: any, index: number) => (
                         <li key={index} className="mb-10 ms-8 group" data-aos="fade-up">
                             <div className="absolute w-4 h-4 bg-emerald-500/20 rounded-full mt-1.5 -start-2 border-2 border-emerald-500 group-hover:bg-emerald-500 group-hover:scale-125 transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.5)]"></div>
                             <time className="mb-1 text-sm font-semibold tracking-wider uppercase leading-none text-muted-foreground group-hover:text-emerald-400 transition-colors duration-300">

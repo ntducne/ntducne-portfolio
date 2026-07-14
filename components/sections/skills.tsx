@@ -13,7 +13,7 @@ export default function Skills(props :any) {
             </div>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-[55rem]">
                 {
-                    item.map((skill, index) => {
+                    item.map((skill: any, index: number) => {
                         return (
                             <div key={index} className="glass-card rounded-3xl hover:border-emerald-500/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300 group overflow-hidden relative" data-aos={skill.animation}>
                                 <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl -z-10 group-hover:bg-emerald-500/20 transition-all duration-300"></div>
