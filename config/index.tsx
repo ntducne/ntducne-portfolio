@@ -208,7 +208,7 @@ export const config = () => {
 
     const submitContact = async (data: Contact) => {
         // var baseApi = "http://localhost:5000/sendMessage";
-        var baseApi = "https://portfolio-s3j4.onrender.com/sendMessage";
+        var baseApi = "https://api.helloyouu.site/contact";
         try {
             await axios.post(baseApi, data);
             toast({
