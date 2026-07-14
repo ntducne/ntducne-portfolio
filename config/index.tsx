@@ -217,7 +217,6 @@ export const config = () => {
 
 
     const submitContact = async (data: Contact) => {
-        // var baseApi = "http://localhost:5000/sendMessage";
         var baseApi = "https://api.helloyouu.site/api/contact";
         try {
             await axios.post(baseApi, data);
