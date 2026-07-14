@@ -20,7 +20,7 @@ import { Textarea } from "../ui/textarea";
 // import { useState } from "react";
 
 interface Contact {
-    fullname: string,
+    fullName: string,
     phone?: string,
     email: string,
     budge?: string,
@@ -28,7 +28,7 @@ interface Contact {
 }
 
 const formSchema = z.object({
-    fullname: z.string().min(2, {
+    fullName: z.string().min(2, {
         message: "Please enter your full name",
     }),
     email: z.string().min(10, {
@@ -50,7 +50,7 @@ export default function Contact() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
-            fullname: "",
+            fullName: "",
             phone: "",
             email: "",
             message: "",
@@ -74,7 +74,7 @@ export default function Contact() {
                     <div className="grid grid-cols-1 lg:grid-cols-3 lg:gap-6 lg:mb-3">
                         <FormField
                             control={form.control}
-                            name="fullname"
+                            name="fullName"
                             render={({ field }) => (
                                     <FormItem>
                                         {/* <FormLabel className="dark:text-white">Username</FormLabel> */}

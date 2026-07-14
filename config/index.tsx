@@ -4,7 +4,7 @@ import axios from "axios";
 import { BriefcaseBusiness, Contact, Dumbbell, FolderKanban, Home, User } from "lucide-react";
 
 interface Contact {
-    fullname: string,
+    fullName: string,
     email: string,
 }
 
