@@ -66,7 +66,7 @@ export const config = () => {
             return {
                 name: data.profile.name || "Nguyen Duc",
                 major: data.profile.introduce?.major_line_2 || "Software Engineer",
-                img: data.profile.avatar_url || "/img.jpg",
+                img: data.profile.avatar_url || "",
                 email: data.profile.email || "nguyenduc10603@gmail.com",
                 address: data.profile.address || "Hanoi, Vietnam",
                 social: defaultSocial,
@@ -75,7 +75,7 @@ export const config = () => {
         return {
             name: "Nguyen Duc",
             major: "Software Engineer",
-            img: "/img.jpg",
+            img: "",
             email: "nguyenduc10603@gmail.com",
             address: "Hanoi, Vietnam",
             social: defaultSocial,

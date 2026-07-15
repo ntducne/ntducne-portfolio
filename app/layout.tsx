@@ -10,6 +10,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Nguyen Duc Portfolio",
   description: "Welcome to my portfolio website, I'm Nguyen Duc, a web designer and developer.",
+  icons: {
+    icon: "/iconn.ico",
+  },
 };
 
 export default function RootLayout({
