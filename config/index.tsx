@@ -1,3 +1,4 @@
+"use client";
 import { useToast } from "@/components/ui/use-toast";
 import { FacebookFilled, GithubFilled, InstagramFilled } from "@ant-design/icons"
 import axios from "axios";

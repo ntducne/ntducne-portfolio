@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/toaster"
-// import { AOSInit } from "@/lib/aos";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +23,6 @@ export default function RootLayout({
 
     <>
       <html lang="en" suppressHydrationWarning>
-        {/* <AOSInit/> */}
       <body className={`${inter.className} bg-background text-foreground antialiased selection:bg-primary/30`}>
         <ThemeProvider
           attribute="class"

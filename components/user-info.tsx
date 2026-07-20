@@ -1,3 +1,4 @@
+"use client";
 import Image from "next/image";
 import { CopyrightCircleOutlined, MailFilled } from "@ant-design/icons";
 import { Button } from "@/components/ui/button";
@@ -50,6 +51,7 @@ export default function UserInfo(props: any) {
                     height={500}
                     className="w-full rounded-3xl object-cover border border-white/10 shadow-2xl group-hover:scale-[1.03] transition-transform duration-500 aspect-square"
                     alt="Picture of the author"
+                    priority
                     unoptimized
                 />
             </div>

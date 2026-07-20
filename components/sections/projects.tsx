@@ -1,5 +1,7 @@
+"use client";
 import { config } from "@/config";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Projects(props: any) {
     const { section, projects } = config();
@@ -20,7 +22,7 @@ export default function Projects(props: any) {
                         return (
                             <div className="group cursor-pointer glass-card rounded-3xl p-4 hover:border-emerald-500/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300 flex flex-col" key={index}>
                                 <div className="relative shadow-sm rounded-2xl overflow-hidden aspect-[4/3]">
-                                    <img className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={project.img} alt={project.name} />
+                                    <Image className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" src={project.img} alt={project.name} width={600} height={450} unoptimized />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
                                 </div>
                                 <div className="mt-6 mb-4 px-2 flex-grow flex flex-col">

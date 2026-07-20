@@ -1,3 +1,4 @@
+"use client";
 import { config } from "@/config";
 export default function About(props :any) {
     const { section, about } = config();

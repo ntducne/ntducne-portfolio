@@ -1,3 +1,4 @@
+"use client";
 import Typewriter from "@/components/TypingEffect";
 import { config } from "@/config";
 import { CodeOutlined, ScheduleOutlined } from "@ant-design/icons";

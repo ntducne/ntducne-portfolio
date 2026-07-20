@@ -1,3 +1,4 @@
+"use client";
 import { config } from "@/config";
 export default function Resume(props :any) {
     const { section, resume } = config();

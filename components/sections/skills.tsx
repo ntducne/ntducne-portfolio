@@ -1,4 +1,6 @@
+"use client";
 import { config } from "@/config";
+import Image from "next/image";
 export default function Skills(props :any) {
     const { section, skills } = config();
     const item = skills();
@@ -17,7 +19,7 @@ export default function Skills(props :any) {
                         return (
                             <div key={index} className="glass-card rounded-3xl hover:border-emerald-500/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300 group overflow-hidden relative" data-aos={skill.animation}>
                                 <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl -z-10 group-hover:bg-emerald-500/20 transition-all duration-300"></div>
-                                <img className="w-24 h-24 mt-8 mb-4 object-contain mx-auto group-hover:scale-110 transition-transform duration-300 drop-shadow-lg" src={skill.icon} alt={skill.name} />
+                                <Image className="w-24 h-24 mt-8 mb-4 object-contain mx-auto group-hover:scale-110 transition-transform duration-300 drop-shadow-lg" src={skill.icon} alt={skill.name} width={96} height={96} unoptimized />
                                 <div className="px-5 pb-6 text-center">
                                     <h5 className="text-lg font-bold tracking-tight group-hover:text-emerald-400 transition-colors duration-300">{skill.name}</h5>
                                 </div>
