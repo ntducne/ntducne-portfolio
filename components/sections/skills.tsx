@@ -1,33 +1,68 @@
 "use client";
+
 import { usePortfolioConfig } from "@/config";
 import Image from "next/image";
-export default function Skills(props :any) {
+import Card3D from "@/components/3d/Card3D";
+import Scroll3DReveal from "@/components/3d/Scroll3DReveal";
+
+export default function Skills(props: any) {
     const { section, skills } = usePortfolioConfig();
     const item = skills();
     const section_item = section()[3];
+
     return (
         <section ref={props.section_4}>
-             <div className="border border-white/10 glass-card w-44 text-center rounded-full py-1.5 text-lg mb-14 flex justify-center items-center text-muted-foreground shadow-lg shadow-emerald-500/5 hover:border-emerald-500/30 transition-colors duration-300">
-                {section_item.icon}<small className="uppercase ml-2 mt-[1px] tracking-widest">{section_item.name}</small>
-            </div>
-            <div className="text-4xl md:text-5xl mt-5 mb-10">
-                <p className="my-4 font-bold tracking-tight">My <span className="text-gradient">Advantages</span></p>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-[55rem]">
-                {
-                    item.map((skill: any, index: number) => {
-                        return (
-                            <div key={index} className="glass-card rounded-3xl hover:border-emerald-500/50 hover:-translate-y-2 hover:shadow-xl hover:shadow-emerald-500/20 transition-all duration-300 group overflow-hidden relative" data-aos={skill.animation}>
-                                <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl -z-10 group-hover:bg-emerald-500/20 transition-all duration-300"></div>
-                                <Image className="w-24 h-24 mt-8 mb-4 object-contain mx-auto group-hover:scale-110 transition-transform duration-300 drop-shadow-lg" src={skill.icon} alt={skill.name} width={96} height={96} />
-                                <div className="px-5 pb-6 text-center">
-                                    <h5 className="text-lg font-bold tracking-tight group-hover:text-emerald-400 transition-colors duration-300">{skill.name}</h5>
+            {/* Section Badge with 3D Reveal */}
+            <Scroll3DReveal variant="flipUp" delay={0.05}>
+                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border border-emerald-500/30 text-muted-foreground text-sm mb-6 shadow-lg shadow-emerald-500/10 hover:border-emerald-500/50 hover:text-emerald-400 transition-all duration-300">
+                    {section_item.icon}
+                    <span className="uppercase tracking-widest font-mono text-xs">{section_item.name}</span>
+                </div>
+            </Scroll3DReveal>
+
+            {/* Headline with 3D Flip */}
+            <Scroll3DReveal variant="tiltLeft" delay={0.1}>
+                <div className="space-y-3 mb-10">
+                    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight">
+                        My <span className="text-gradient">Advantages</span>
+                    </h2>
+                </div>
+            </Scroll3DReveal>
+
+            {/* 3D Skills Grid with RGB Running Border on Hover */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+                {item.map((skill: any, index: number) => {
+                    const staggerDelay = 0.05 * (index % 4);
+
+                    return (
+                        <Scroll3DReveal key={skill.name + index} variant="cascade3D" delay={staggerDelay}>
+                            <Card3D className="h-full" rounded="rounded-3xl" innerRounded="rounded-[22.5px]">
+                                <div className="p-6 flex flex-col items-center justify-center text-center h-full relative overflow-hidden group">
+                                    {/* Ambient Glow */}
+                                    <div className="absolute top-0 right-0 w-20 h-20 bg-emerald-500/10 rounded-full blur-2xl -z-10 group-hover:bg-emerald-500/25 transition-all duration-300" />
+
+                                    {/* Icon */}
+                                    <div className="w-20 h-20 relative flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                                        <Image
+                                            src={skill.icon}
+                                            alt={skill.name}
+                                            width={80}
+                                            height={80}
+                                            className="w-full h-full object-contain filter drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+                                            unoptimized
+                                        />
+                                    </div>
+
+                                    {/* Skill Name */}
+                                    <h4 className="text-base sm:text-lg font-bold tracking-tight group-hover:text-emerald-400 transition-colors">
+                                        {skill.name}
+                                    </h4>
                                 </div>
-                            </div>
-                        )
-                    })
-                }
+                            </Card3D>
+                        </Scroll3DReveal>
+                    );
+                })}
             </div>
         </section>
-    )
+    );
 }

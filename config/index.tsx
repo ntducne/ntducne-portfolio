@@ -89,32 +89,32 @@ export const usePortfolioConfig = () => {
         return [
             {
                 name: "Introduce",
-                icon: <Home />,
+                icon: <Home className="w-4 h-4" />,
                 scroll: 'introduce'
             },
             {
                 name: "About",
-                icon: <User />,
+                icon: <User className="w-4 h-4" />,
                 scroll: 'about'
             },
             {
                 name: "Resume",
-                icon: <BriefcaseBusiness />,
+                icon: <BriefcaseBusiness className="w-4 h-4" />,
                 scroll: 'resume'
             },
             {
                 name: "Skills",
-                icon: <Dumbbell />,
+                icon: <Dumbbell className="w-4 h-4" />,
                 scroll: 'skill'
             },
             {
                 name: "Projects",
-                icon: <FolderKanban />,
+                icon: <FolderKanban className="w-4 h-4" />,
                 scroll: 'project'
             },
             {
                 name: "Contact",
-                icon: <Contact />,
+                icon: <Contact className="w-4 h-4" />,
                 scroll: 'contact'
             }
         ];
