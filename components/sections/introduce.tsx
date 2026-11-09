@@ -1,9 +1,9 @@
 "use client";
 import Typewriter from "@/components/TypingEffect";
-import { config } from "@/config";
+import { usePortfolioConfig } from "@/config";
 import { CodeOutlined, ScheduleOutlined } from "@ant-design/icons";
 export default function Introduce() {
-    const { section, introduce } = config();
+    const { section, introduce } = usePortfolioConfig();
     const item = introduce();
     const section_item = section()[0];
     return (

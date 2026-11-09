@@ -8,14 +8,14 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer"
 import Link from "next/link";
-import { config } from "@/config";
+import { usePortfolioConfig } from "@/config";
 import { AlignJustify } from "lucide-react";
 import { ModeToggle } from "@/components/mode-toggle";
 import { useScrollSpy } from "@/lib/useScrollSpy";
 import { useState, useEffect } from "react";
 
 export default function Header() {
-    const { section } = config();
+    const { section } = usePortfolioConfig();
     const item = section();
     const sectionIds = item.map((val: any) => val.scroll);
     

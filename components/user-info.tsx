@@ -2,13 +2,13 @@
 import Image from "next/image";
 import { CopyrightCircleOutlined, MailFilled } from "@ant-design/icons";
 import { Button } from "@/components/ui/button";
-import { config } from "@/config";
+import { usePortfolioConfig } from "@/config";
 import Link from "next/link";
 
 export default function UserInfo(props: any) {
     const date = new Date();
     const year = date.getFullYear()
-    const { info } = config();
+    const { info } = usePortfolioConfig();
     const item = info();
 
     function createMailtoLink(to :string, subject :string = "", body :string = "", cc :string = "", bcc :string = "") {

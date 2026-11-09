@@ -1,8 +1,8 @@
 "use client";
-import { config } from "@/config";
+import { usePortfolioConfig } from "@/config";
 import Image from "next/image";
 export default function Skills(props :any) {
-    const { section, skills } = config();
+    const { section, skills } = usePortfolioConfig();
     const item = skills();
     const section_item = section()[3];
     return (

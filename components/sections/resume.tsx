@@ -1,7 +1,7 @@
 "use client";
-import { config } from "@/config";
+import { usePortfolioConfig } from "@/config";
 export default function Resume(props :any) {
-    const { section, resume } = config();
+    const { section, resume } = usePortfolioConfig();
     const item = resume();
     const section_item = section()[2];
 

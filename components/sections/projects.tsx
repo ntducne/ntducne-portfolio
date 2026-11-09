@@ -1,10 +1,10 @@
 "use client";
-import { config } from "@/config";
+import { usePortfolioConfig } from "@/config";
 import Link from "next/link";
 import Image from "next/image";
 
 export default function Projects(props: any) {
-    const { section, projects } = config();
+    const { section, projects } = usePortfolioConfig();
     const item = projects();
     const section_item = section()[4];
 

@@ -12,9 +12,44 @@ interface ContactData {
     message?: string;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
+interface PortfolioData {
+    profile: {
+        name: string;
+        email: string;
+        address?: string;
+        avatar_url?: string;
+        about_text?: string;
+        introduce?: {
+            text_type?: string;
+            major_line_1?: string;
+            major_line_2?: string;
+            text?: string;
+            start_work_year?: number;
+            projects_completed?: number;
+            num_of_clients?: number;
+        };
+        social_links?: {
+            name: string;
+            link: string;
+            icon_name: string;
+            is_active?: boolean;
+            order?: number;
+        }[];
+    } | null;
+    resumes: { time_period: string; title: string; description?: string; order?: number }[];
+    skills: { name: string; icon_url: string; animation?: string; order?: number }[];
+    projects: {
+        name: string;
+        description?: string;
+        image_url?: string;
+        technology?: string[];
+        website_link?: string;
+        github_link?: string;
+        order?: number;
+    }[];
+}
 
-const fetcher = (url: string) => axios.get(url).then(res => res.data);
+const fetchPortfolio = (url: string) => axios.get<PortfolioData>(url).then(res => res.data);
 
 const getSocialIcon = (iconName: string) => {
     switch (iconName?.toLowerCase()) {
@@ -41,9 +76,9 @@ const getSocialIcon = (iconName: string) => {
     }
 };
 
-export const config = () => {
+export const usePortfolioConfig = () => {
     const { toast } = useToast();
-    const { data } = useSWR(`${API_BASE_URL}/portfolio/all`, fetcher);
+    const { data } = useSWR("/api/portfolio/all", fetchPortfolio);
 
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
@@ -93,11 +128,11 @@ export const config = () => {
         ];
 
         if (data?.profile) {
-            const social = Array.isArray(data.profile.social_links) && data.profile.social_links.length > 0
+            const social = Array.isArray(data.profile.social_links)
                 ? data.profile.social_links
-                    .filter((s: any) => s.is_active !== false)
-                    .sort((a: any, b: any) => (a.order || 0) - (b.order || 0))
-                    .map((s: any) => ({
+                    .filter((s) => s.is_active !== false)
+                    .sort((a, b) => (a.order ?? 0) - (b.order ?? 0))
+                    .map((s) => ({
                         name: s.name,
                         link: s.link,
                         open: true,
@@ -108,7 +143,7 @@ export const config = () => {
             return {
                 name: data.profile.name || "Nguyen Duc",
                 major: data.profile.introduce?.major_line_2 || "Software Engineer",
-                img: data.profile.avatar_url || "/img.jpg",
+                img: data.profile.avatar_url || "/iconn.ico",
                 email: data.profile.email || "nguyenduc10603@gmail.com",
                 address: data.profile.address || "Hanoi, Vietnam",
                 social,
@@ -117,7 +152,7 @@ export const config = () => {
         return {
             name: "Nguyen Duc",
             major: "Software Engineer",
-            img: "/img.jpg",
+            img: "/iconn.ico",
             email: "nguyenduc10603@gmail.com",
             address: "Hanoi, Vietnam",
             social: defaultSocial,
@@ -135,8 +170,8 @@ export const config = () => {
                 },
                 text: intro.text || "I design and code beautifully simple things and i love what i do. Just simple like that!",
                 year_of_experience: currentYear - (intro.start_work_year || startWork),
-                project_completed: intro.projects_completed || 20,
-                num_of_clients: intro.num_of_clients || 2
+                project_completed: intro.projects_completed ?? 20,
+                num_of_clients: intro.num_of_clients ?? 2
             };
         }
         return {
@@ -159,7 +194,7 @@ export const config = () => {
 
     const resume = () => {
         if (data?.resumes && data.resumes.length > 0) {
-            return data.resumes.sort((a: any, b: any) => a.order - b.order).map((item: any) => ({
+            return data.resumes.slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).map((item) => ({
                 time: item.time_period,
                 title: item.title,
                 description: item.description
@@ -170,7 +205,7 @@ export const config = () => {
 
     const skills = () => {
         if (data?.skills && data.skills.length > 0) {
-            return data.skills.sort((a: any, b: any) => a.order - b.order).map((item: any) => ({
+            return data.skills.slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).map((item) => ({
                 name: item.name,
                 icon: item.icon_url,
                 animation: item.animation || "fade-up"
@@ -181,10 +216,10 @@ export const config = () => {
 
     const projects = () => {
         if (data?.projects && data.projects.length > 0) {
-            return data.projects.sort((a: any, b: any) => a.order - b.order).map((item: any) => ({
+            return data.projects.slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).map((item) => ({
                 name: item.name,
                 description: item.description,
-                img: item.image_url || "/img.jpg",
+                img: item.image_url || "/iconn.ico",
                 technology: item.technology || [],
                 website: item.website_link || "",
                 git: item.github_link || "",
@@ -193,10 +228,9 @@ export const config = () => {
         return [];
     };
 
-    const submitContact = async (data: ContactData) => {
-        const baseApi = `${API_BASE_URL}/contact`;
+    const submitContact = async ({ fullName, email, phone, message }: ContactData) => {
         try {
-            await axios.post(baseApi, data);
+            await axios.post("/api/contact", { full_name: fullName, email, phone, message });
             toast({
                 title: "Success !",
                 description: "Message sent successfully !",

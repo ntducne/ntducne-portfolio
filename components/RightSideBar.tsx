@@ -6,13 +6,13 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { config } from "@/config";
+import { usePortfolioConfig } from "@/config";
 import { ModeToggle } from "./mode-toggle";
 import { useScrollSpy } from "@/lib/useScrollSpy";
 import { useEffect, useState } from "react";
 
 export default function RightSideBar() {
-    const { section } = config();
+    const { section } = usePortfolioConfig();
     const item = section();
     const sectionIds = item.map((val: any) => val.scroll);
     

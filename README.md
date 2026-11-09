@@ -20,6 +20,12 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Portfolio API
+
+The portfolio reads `GET /api/portfolio/all` and sends contact messages to `POST /api/contact` through Next.js. Both routes forward to the NestJS backend in `ntducc`.
+
+Start the `ntducc` backend with its MongoDB configuration before running the portfolio. Next.js forwards to `http://127.0.0.1:3002` by default. Set `BACKEND_INTERNAL_URL` in `.env.local` to use another backend origin, then restart the dev server or rebuild for production.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

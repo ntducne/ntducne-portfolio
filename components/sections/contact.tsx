@@ -1,6 +1,6 @@
 "use client"
 
-import { config } from "@/config";
+import { usePortfolioConfig } from "@/config";
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
@@ -40,7 +40,7 @@ const formSchema = z.object({
 })
 
 export default function Contact() {
-    const { section, submitContact } = config();
+    const { section, submitContact } = usePortfolioConfig();
     const section_item = section()[5];
 
     // const formatMoney = (money: number) => {
